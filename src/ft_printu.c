@@ -40,7 +40,7 @@ static void	ft_putnbrbase_inner(uintmax_t nbr, char *base, t_data *data,
 	if (data->got_accuracy)
 		ft_printf_width_pad(len, data->accuracy, base[0]);
 	if (nbr != 0 || !data->got_accuracy || data->accuracy != 0)
-		ft_putnbrbase(nbr, ft_atoi(base));
+		ft_putnbrbase(nbr, 10);
 }
 
 ssize_t		ft_printfu(uintmax_t nbr, t_data *data, char *base, char *prefix)
@@ -66,5 +66,5 @@ ssize_t		ft_printfu(uintmax_t nbr, t_data *data, char *base, char *prefix)
 	ft_putnbrbase_inner(nbr, base, data, len);
 	if (data->got_width && data->right_pad)
 		ft_printf_width_pad(strlen, data->width, ' ');
-	return (data->got_width ? (ft_minmax(0, strlen, data->width)) : strlen);
+	return (data->got_width ? (ft_minmax(1, strlen, data->width)) : strlen);
 }

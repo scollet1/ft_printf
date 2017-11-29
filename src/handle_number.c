@@ -10,7 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "ft_printf.h"
 
 ssize_t				ft_printf_handle_long_bis(char **format, va_list *args,
