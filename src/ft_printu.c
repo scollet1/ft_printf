@@ -14,7 +14,7 @@
 
 //void	ft_putnbrbase(int n, int base)
 //{
-	ft_putstr(ft_itoa_base(n, base));
+//	ft_putstr(ft_itoa_base(n, base));
 	// if (n == -2147483648)
 	// {
 	// 	ft_putstr("-2147483648");
