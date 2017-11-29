@@ -6,7 +6,7 @@ LIB = libft
 DEP = ft_bzero.c ft_isdigit.c ft_memalloc.c \
 	  ft_putstr.c ft_putchar.c ft_putchar_fd.c \
 		ft_putstr_fd.c ft_putwchar.c ft_putnbr.c \
-		ft_atoi.c ft_minmax.c \
+		ft_atoi.c ft_minmax.c ft_memset.c \
 	  ft_strchr.c ft_strlen.c ft_tolower.c ft_wstrlen.c
 
 SRC = ft_printf.c utils.c parser.c handler.c \
