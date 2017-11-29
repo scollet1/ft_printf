@@ -10,15 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "ft_printf.h"
-
-unsigned ft_minmax(unsigned m, unsigned a, unsigned b)
-{
-	if (m)
-		return (a > b)? a : b;
-	return (a < b)? a : b;
-}
 
 ssize_t	ft_printf_handle_ptr(char **format, va_list *args, t_data *data)
 {

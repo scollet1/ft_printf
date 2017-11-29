@@ -13,13 +13,6 @@
 
 #include "ft_printf.h"
 
-unsigned ft_minmax(unsigned m, unsigned a, unsigned b)
-{
-	if (m)
-		return (a > b)? a : b;
-	return (a < b)? a : b;
-}
-
 void			ft_putnwstr(const wchar_t *str, size_t len)
 {
 	size_t	i;

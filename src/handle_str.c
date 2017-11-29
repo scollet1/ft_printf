@@ -37,13 +37,6 @@ void ft_putwchar(wchar_t chr)
 	}
 }
 
-unsigned ft_minmax(unsigned m, unsigned a, unsigned b)
-{
-	if (m)
-		return (a > b)? a : b;
-	return (a < b)? a : b;
-}
-
 ssize_t	ft_printf_handle_char(char **format, va_list *args, t_data *data)
 {
 	(void)format;
@@ -56,9 +49,6 @@ ssize_t	ft_printf_handle_char(char **format, va_list *args, t_data *data)
 		ft_putchar(va_arg(*args, int));
 		if (data->got_width && data->right_pad)
 			ft_printf_width_pad(1, data->width, ' ');
-//		if (data->got_width)
-//			return (data->got_width > 1 ? data->got_width : 1);
-//		return (1);
 		return (data->got_width ? ft_minmax(1, data->width, 1) : 1);
 	}
 }
