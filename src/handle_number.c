@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   handle_number.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: scollet <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/11/28 16:45:10 by scollet           #+#    #+#             */
+/*   Updated: 2017/11/28 16:45:12 by scollet          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 
 #include "ft_printf.h"
 
@@ -64,12 +76,12 @@ ssize_t				ft_printf_handle_octal(char **format, va_list *args,
 		ft_putstr("0");
 		if (data->got_width && data->right_pad)
 			ft_printf_width_pad(1, data->width, ' ');
-		return (data->got_width ? ft_max(data->width, 1) : 1);
+		return (data->got_width ? ft_minmax(1, data->width, 1) : 1);
 	}
 	else if (data->prefix && nbr)
 	{
 		data->got_accuracy = 1;
-		data->accuracy = ft_max(data->accuracy,
+		data->accuracy = ft_minmax(1, data->accuracy,
 				ft_printf_nbrlen(nbr, "01234567") + 1);
 	}
 	return (ft_printfu(nbr, data, "01234567", NULL));

@@ -1,3 +1,5 @@
+#include "libft.h"
+
 size_t		ft_wcharlen(wchar_t w)
 {
 	if (w <= 0x7F)

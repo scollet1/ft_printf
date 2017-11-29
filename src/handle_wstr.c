@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   handle_wstr.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: scollet <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/11/28 16:45:31 by scollet           #+#    #+#             */
+/*   Updated: 2017/11/28 16:45:32 by scollet          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 
 #include "ft_printf.h"
 
@@ -55,7 +67,7 @@ ssize_t			ft_printf_manage_wstr(char **format, va_list *args,
 	if (!str)
 		str = L"(null)";
 	strlen = data->got_accuracy ? calc_wstrlen(str, data->accuracy, 0) :
-			calc_wstrlen(str);
+			calc_wstrlen(str, data->accuracy, 0);
 	if (data->got_width && !data->right_pad)
 		ft_printf_width_pad(strlen, data->width, data->zero_pad ? '0' : ' ');
 	ft_putnwstr(str, strlen);

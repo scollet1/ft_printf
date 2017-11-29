@@ -1,5 +1,24 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   handle_spec.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: scollet <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/11/28 16:45:17 by scollet           #+#    #+#             */
+/*   Updated: 2017/11/28 16:45:19 by scollet          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 
 #include "ft_printf.h"
+
+unsigned ft_minmax(unsigned m, unsigned a, unsigned b)
+{
+	if (m)
+		return (a > b)? a : b;
+	return (a < b)? a : b;
+}
 
 ssize_t	ft_printf_handle_ptr(char **format, va_list *args, t_data *data)
 {
@@ -21,7 +40,7 @@ ssize_t	ft_printf_handle_percent(char **format, va_list *args, t_data *data)
 	ft_putchar('%');
 	if (data->got_width && data->right_pad)
 		ft_printf_width_pad(1, data->width, ' ');
-	return (data->got_width ? ft_max(data->width, 1) : 1);
+	return (data->got_width ? ft_minmax(1, data->width, 1) : 1);
 }
 
 ssize_t	ft_printf_handle_null(char **format, va_list *args, t_data *data)
@@ -32,5 +51,5 @@ ssize_t	ft_printf_handle_null(char **format, va_list *args, t_data *data)
 	ft_putchar(**format);
 	if (data->got_width && data->right_pad)
 		ft_printf_width_pad(1, data->width, ' ');
-	return (data->got_width ? ft_max(data->width, 1) : 1);
+	return (data->got_width ? ft_minmax(1, data->width, 1) : 1);
 }
