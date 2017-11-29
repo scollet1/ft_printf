@@ -14,23 +14,24 @@
 
 void	ft_putnbrbase(int n, int base)
 {
-	if (n == -2147483648)
-	{
-		ft_putstr("-2147483648");
-		return ;
-	}
-	if (n < 0)
-	{
-		ft_putchar('-');
-		n = -n;
-	}
-	if (n >= base)
-	{
-		ft_putnbr(n / 10);
-		ft_putnbr(n % base);
-	}
-	else
-		ft_putchar(n + '0');
+	ft_putstr(ft_itoa_base(n, base));
+	// if (n == -2147483648)
+	// {
+	// 	ft_putstr("-2147483648");
+	// 	return ;
+	// }
+	// if (n < 0)
+	// {
+	// 	ft_putchar('-');
+	// 	n = -n;
+	// }
+	// if (n >= base)
+	// {
+	// 	ft_putnbr(n / 10);
+	// 	ft_putnbr(n % base);
+	// }
+	// else
+	// 	ft_putchar(n + '0');
 }
 
 static void	ft_putnbrbase_inter(uintmax_t nbr, char *base, t_data *data,
