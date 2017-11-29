@@ -26,7 +26,7 @@ void	ft_putnbrbase(int n, int base)
 	}
 	if (n >= base)
 	{
-		ft_putnbr(n / base);
+		ft_putnbr(n / 10);
 		ft_putnbr(n % base);
 	}
 	else
