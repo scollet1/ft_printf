@@ -1,12 +1,16 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   handle_wstr.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: scollet <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/11/28 16:45:31 by scollet           #+#    #+#             */
+/*   Updated: 2017/11/28 16:45:32 by scollet          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "ft_printf.h"
-
-unsigned ft_minmax(unsigned m, unsigned a, unsigned b)
-{
-	if (m)
-		return (a > b)? a : b;
-	return (a < b)? a : b;
-}
 
 void			ft_putnwstr(const wchar_t *str, size_t len)
 {
@@ -28,6 +32,30 @@ void			ft_putnwstr(const wchar_t *str, size_t len)
 	}
 }
 
+ssize_t	ft_printf_handle_wchar(char **format, va_list *args, t_data *data)
+{
+	wchar_t		chr;
+	unsigned	len;
+
+	(void)format;
+	chr = (wchar_t)va_arg(*args, wint_t);
+	len = 0;
+	if (chr <= 0x7F)
+		len = 1;
+	else if (chr <= 0x7FF)
+		len = 2;
+	else if (chr <= 0xFFFF)
+		len = 3;
+	else if (chr <= 0x10FFFF)
+		len = 4;
+	if (data->got_width && !data->right_pad)
+		ft_printf_width_pad(len, data->width, data->zero_pad ? '0' : ' ');
+	ft_putwchar(chr);
+	if (data->got_width && data->right_pad)
+		ft_printf_width_pad(len, data->width, data->zero_pad ? '0' : ' ');
+	return (data->got_width ? ft_minmax(1, len, data->width) : len);
+}
+
 static size_t	calc_wstrlen(wchar_t *str, int precision, size_t i)
 {
 	if (!*str || !precision)
@@ -44,7 +72,7 @@ static size_t	calc_wstrlen(wchar_t *str, int precision, size_t i)
 		return (i);
 }
 
-ssize_t			ft_printf_manage_wstr(char **format, va_list *args,
+ssize_t			ft_printf_handle_wstr(char **format, va_list *args,
 		t_data *data)
 {
 	wchar_t	*str;
@@ -55,7 +83,7 @@ ssize_t			ft_printf_manage_wstr(char **format, va_list *args,
 	if (!str)
 		str = L"(null)";
 	strlen = data->got_accuracy ? calc_wstrlen(str, data->accuracy, 0) :
-			calc_wstrlen(str);
+			ft_strlen(str);
 	if (data->got_width && !data->right_pad)
 		ft_printf_width_pad(strlen, data->width, data->zero_pad ? '0' : ' ');
 	ft_putnwstr(str, strlen);

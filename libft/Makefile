@@ -28,7 +28,6 @@ SRCS = ft_atoi.c 		\
 		ft_lstiter.c 	\
 		ft_lstmap.c 	\
 		ft_lstnew.c 	\
-		ft_max.c	\
 		ft_memalloc.c 	\
 		ft_memccpy.c 	\
 		ft_memchr.c 	\
@@ -37,10 +36,12 @@ SRCS = ft_atoi.c 		\
 		ft_memdel.c 	\
 		ft_memmove.c 	\
 		ft_memset.c 	\
+		ft_minmax.c		\
 		ft_putchar.c 	\
 		ft_putchar_fd.c \
 		ft_putendl.c 	\
 		ft_putendl_fd.c \
+		ft_putnbrbase.c \
 		ft_putnbr.c 	\
 		ft_putnbr_fd.c 	\
 		ft_putstr.c 	\
@@ -76,7 +77,7 @@ SRCS = ft_atoi.c 		\
 		ft_toupper.c 	\
 		ft_strlcat.c 	\
 		ft_wstrlen.c \
-		
+
 
 BIN = $(SRCS:.c=.o)
 
@@ -87,7 +88,7 @@ CC = gcc
 HEADER = libft.h
 
 $(NAME):
-	@$(CC) $(FLAGS) -I $(HEADER) -c $(SRCS) 
+	@$(CC) $(FLAGS) -I $(HEADER) -c $(SRCS)
 	@ar rc $(NAME) $(BIN)
 
 all: $(NAME)

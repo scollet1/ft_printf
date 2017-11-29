@@ -19,7 +19,7 @@ static char		*ft_num(char *num, int n, int base)
 	while (n != 0)
 	{
 		*--num = '0' + (n % base);
-		n /= base;
+		n /= 10;
 	}
 	return (num);
 }
@@ -35,11 +35,11 @@ char			*ft_itoa_base(int n, int base)
 	else if (num)
 	{
 		*--num = '0' - (n % base);
-		n /= base;
+		n /= 10;
 		while (n != 0)
 		{
 			*--num = '0' - (n % base);
-			n /= base;
+			n /= 10;
 		}
 		*--num = '-';
 	}

@@ -6,7 +6,7 @@
 /*   By: scollet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/27 20:32:04 by scollet           #+#    #+#             */
-/*   Updated: 2017/03/08 14:31:24 by scollet          ###   ########.fr       */
+/*   Updated: 2017/11/28 17:05:18 by scollet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void				ft_lstdelone(t_list **alst, void (*del)(void*, size_t));
 void				ft_lstiter(t_list *lst, void (*f)(t_list *elem));
 t_list				*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 t_list				*ft_lstnew(void const *content, size_t content_size);
-int				ft_max(int x, int y);
+unsigned		ft_minmax(unsigned m, unsigned x, unsigned y);
 void				*ft_memalloc(size_t size);
 void				*ft_memccpy(void *dst, const void *src, int c, size_t n);
 void				*ft_memchr(const void *s, int c, size_t n);
@@ -58,8 +58,8 @@ void				ft_putnbr(int n);
 void				ft_putnbr_fd(int n, int fd);
 void				ft_putstr(const char *s);
 void				ft_putstr_fd(const char *s, int fd);
-void	ft_putwchar(wchar_t chr);
-void	ft_putwchar_fd(wchar_t chr, int fd);
+void				ft_putwchar(wchar_t chr);
+void				ft_putwchar_fd(wchar_t chr, int fd);
 char				*ft_strcat(char *s1, const char *s2);
 char				*ft_strchr(const char *s, int c);
 void				ft_strclr(char *s);
@@ -90,6 +90,6 @@ char				*ft_strtrim(const char *s);
 int					ft_tolower(int c);
 int					ft_toupper(int c);
 size_t	ft_wcharlen(wchar_t w);
-size_t	ft_wstrlen(wchar_t *wstr)
+size_t	ft_wstrlen(wchar_t *wstr);
 
 #endif

@@ -1,60 +1,69 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   handle_str.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: scollet <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/11/28 16:45:24 by scollet           #+#    #+#             */
+/*   Updated: 2017/11/28 16:45:25 by scollet          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void ft_putwchar(wchar_t chr)
+void	ft_putwchar_fd(wchar_t chr, int fd)
 {
 	if (chr <= 0x7F)
-		ft_putchar(chr);
+		ft_putchar_fd(chr, fd);
 	else if (chr <= 0x7FF)
 	{
-		ft_putchar((chr >> 6) + 0xC0);
-		ft_putchar((chr & 0x3F) + 0x80);
+		ft_putchar_fd((chr >> 6) + 0xC0, fd);
+		ft_putchar_fd((chr & 0x3F) + 0x80, fd);
 	}
 	else if (chr <= 0xFFFF)
 	{
-		ft_putchar((chr >> 12) + 0xE0);
-		ft_putchar(((chr >> 6) & 0x3F) + 0x80);
-		ft_putchar((chr & 0x3F) + 0x80);
+		ft_putchar_fd((chr >> 12) + 0xE0, fd);
+		ft_putchar_fd(((chr >> 6) & 0x3F) + 0x80, fd);
+		ft_putchar_fd((chr & 0x3F) + 0x80, fd);
 	}
 	else if (chr <= 0x10FFFF)
 	{
-		ft_putchar((chr >> 18) + 0xF0);
-		ft_putchar(((chr >> 12) & 0x3F) + 0x80);
-		ft_putchar(((chr >> 6) & 0x3F) + 0x80);
-		ft_putchar((chr & 0x3F) + 0x80);
+		ft_putchar_fd((chr >> 18) + 0xF0, fd);
+		ft_putchar_fd(((chr >> 12) & 0x3F) + 0x80, fd);
+		ft_putchar_fd(((chr >> 6) & 0x3F) + 0x80, fd);
+		ft_putchar_fd((chr & 0x3F) + 0x80, fd);
 	}
 }
 
-unsigned ft_minmax(unsigned m, unsigned a, unsigned b)
+void	ft_putwchar(wchar_t chr)
 {
-	if (m)
-		return (a > b)? a : b;
-	return (a < b)? a : b;
+	ft_putwchar_fd(chr, STDOUT_FILENO);
 }
 
-ssize_t	ft_printf_handle_wchar(char **format, va_list *args, t_data *data)
-{
-	wchar_t		chr;
-	unsigned	len;
-
-	(void)format;
-	chr = (wchar_t)va_arg(*args, wint_t);
-	len = 0;
-	if (chr <= 0x7F)
-		len = 1;
-	else if (chr <= 0x7FF)
-		len = 2;
-	else if (chr <= 0xFFFF)
-		len = 3;
-	else if (chr <= 0x10FFFF)
-		len = 4;
-	if (data->got_width && !data->right_pad)
-		ft_printf_width_pad(len, data->width, data->zero_pad ? '0' : ' ');
-	ft_putwchar(chr);
-	if (data->got_width && data->right_pad)
-		ft_printf_width_pad(len, data->width, data->zero_pad ? '0' : ' ');
-	return (data->got_width ? ft_minmax(1, len, data->width) : len);
-}
+// void ft_putwchar(wchar_t chr)
+// {
+// 	if (chr <= 0x7F)
+// 		ft_putchar(chr);
+// 	else if (chr <= 0x7FF)
+// 	{
+// 		ft_putchar((chr >> 6) + 0xC0);
+// 		ft_putchar((chr & 0x3F) + 0x80);
+// 	}
+// 	else if (chr <= 0xFFFF)
+// 	{
+// 		ft_putchar((chr >> 12) + 0xE0);
+// 		ft_putchar(((chr >> 6) & 0x3F) + 0x80);
+// 		ft_putchar((chr & 0x3F) + 0x80);
+// 	}
+// 	else if (chr <= 0x10FFFF)
+// 	{
+// 		ft_putchar((chr >> 18) + 0xF0);
+// 		ft_putchar(((chr >> 12) & 0x3F) + 0x80);
+// 		ft_putchar(((chr >> 6) & 0x3F) + 0x80);
+// 		ft_putchar((chr & 0x3F) + 0x80);
+// 	}
+// }
 
 ssize_t	ft_printf_handle_char(char **format, va_list *args, t_data *data)
 {
@@ -68,9 +77,6 @@ ssize_t	ft_printf_handle_char(char **format, va_list *args, t_data *data)
 		ft_putchar(va_arg(*args, int));
 		if (data->got_width && data->right_pad)
 			ft_printf_width_pad(1, data->width, ' ');
-//		if (data->got_width)
-//			return (data->got_width > 1 ? data->got_width : 1);
-//		return (1);
 		return (data->got_width ? ft_minmax(1, data->width, 1) : 1);
 	}
 }
