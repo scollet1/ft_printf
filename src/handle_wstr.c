@@ -83,7 +83,7 @@ ssize_t			ft_printf_handle_wstr(char **format, va_list *args,
 	if (!str)
 		str = L"(null)";
 	strlen = data->got_accuracy ? calc_wstrlen(str, data->accuracy, 0) :
-			calc_wstrlen(str, data->accuracy, 0);
+			ft_strlen(str);
 	if (data->got_width && !data->right_pad)
 		ft_printf_width_pad(strlen, data->width, data->zero_pad ? '0' : ' ');
 	ft_putnwstr(str, strlen);
