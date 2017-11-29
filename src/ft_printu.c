@@ -34,7 +34,7 @@ void	ft_putnbrbase(int n, int base)
 	// 	ft_putchar(n + '0');
 }
 
-static void	ft_putnbrbase_inter(uintmax_t nbr, char *base, t_data *data,
+static void	ft_putnbrbase_inner(uintmax_t nbr, char *base, t_data *data,
 		unsigned int len)
 {
 	if (data->got_accuracy)
@@ -63,8 +63,8 @@ ssize_t		ft_printfu(uintmax_t nbr, t_data *data, char *base, char *prefix)
 		ft_printf_width_pad(strlen, data->width, ' ');
 	if (data->prefix && prefix && nbr)
 		ft_putstr(prefix);
-	ft_putnbrbase_inter(nbr, base, data, len);
+	ft_putnbrbase_inner(nbr, base, data, len);
 	if (data->got_width && data->right_pad)
 		ft_printf_width_pad(strlen, data->width, ' ');
-	return (data->got_width ? (ft_minmax(1, strlen, data->width)) : strlen);
+	return (data->got_width ? (ft_minmax(0, strlen, data->width)) : strlen);
 }
