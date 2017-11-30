@@ -10,7 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "ft_printf.h"
 
 unsigned int		ft_printf_maxstrlen(uintmax_t nbr, char *base, char *p,
