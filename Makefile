@@ -42,6 +42,5 @@ fclean: clean
 	@(cd $(LIB) && $(MAKE) $@)
 	@rm -f $(NAME)
 
-re: fclean all
-
 .PHONY: clean fclean re
+re: fclean all
