@@ -74,8 +74,11 @@ static size_t	calc_wstrlen(wchar_t *str, int precision, size_t i)
 
 int ft_wstrlen(wchar_t *str)
 {
-	wchar_t i = '0';
-	while (str[i])i++;
+	size_t i;
+
+	i = 0;
+	while (str[i])
+		i++;
 	return (i);
 }
 
