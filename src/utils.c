@@ -102,6 +102,6 @@ ssize_t				ft_printf_nbrforceprefix(uintmax_t nbr, char *base,
 	}
 	else if (data->got_width)
 		data->width -= ft_strlen(prefix);
-	// ft_putstr(prefix);
+	ft_putstr(prefix);
 	return (ft_printfu(nbr, data, base, NULL) + cut);
 }
