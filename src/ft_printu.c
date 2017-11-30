@@ -40,7 +40,7 @@ static void	ft_putnbrbase_inner(uintmax_t nbr, char *base, t_data *data,
 	if (data->got_accuracy)
 		ft_printf_width_pad(len, data->accuracy, base[0]);
 	if (nbr != 0 || !data->got_accuracy || data->accuracy != 0)
-		ft_putnbrbase(nbr, 10);
+		ft_putnbrbase(nbr, base);
 }
 
 ssize_t		ft_printfu(uintmax_t nbr, t_data *data, char *base, char *prefix)
