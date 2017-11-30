@@ -94,7 +94,7 @@ ssize_t			ft_printf_handle_wstr(char **format, va_list *args,
 		str = L"(null)";
 	strlen = data->got_accuracy ? (size_t)(ft_minmax(0, calc_wstrlen(str,
 		data->accuracy, 0),
-		data->accuracy)) : calc_wstrlen(str, 1, 0);
+		data->accuracy)) : ft_wstrlen(str);
 	// strlen = calc_wstrlen(str, data->accuracy, 0);// :
 			// ft_strlen(str);
 	if (data->got_width && !data->right_pad)
