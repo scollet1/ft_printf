@@ -72,7 +72,7 @@ static size_t	calc_wstrlen(wchar_t *str, int precision, size_t i)
 		return (i);
 }
 
-int ft_wstrlen(wchar_t *str)
+size_t ft_wstrlen(wchar_t *str)
 {
 	size_t i;
 
