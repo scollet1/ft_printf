@@ -32,7 +32,7 @@ unsigned int		ft_printf_maxstrlen(uintmax_t nbr, char *base, char *p,
 
 void				ft_printf_width_pad(int nbrstrlen, int width, char padwith)
 {
-	while (nbrstrlen + 1 < width)
+	while (nbrstrlen < width)
 	{
 		ft_putchar(padwith);
 		nbrstrlen++;

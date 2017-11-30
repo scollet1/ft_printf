@@ -72,7 +72,7 @@ ssize_t				ft_printf_handle_octal(char **format, va_list *args,
 	{
 		if (data->got_width && !data->right_pad)
 			ft_printf_width_pad(1, data->width, data->zero_pad ? '0' : ' ');
-		ft_putstr("0");
+		// ft_putstr("0");
 		if (data->got_width && data->right_pad)
 			ft_printf_width_pad(1, data->width, ' ');
 		return (data->got_width ? ft_minmax(1, data->width, 1) : 1);
