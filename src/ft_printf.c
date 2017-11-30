@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
+#include <stdarg.h>
 #include "ft_printf.h"
 
 int             handle_args(char **format, va_list *args, t_data *data)

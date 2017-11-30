@@ -12,9 +12,9 @@
 
 #include "ft_printf.h"
 
-void	ft_putnbrbase(int n, int base)
-{
-	ft_putstr(ft_itoa_base(n, base));
+//void	ft_putnbrbase(int n, int base)
+//{
+//	ft_putstr(ft_itoa_base(n, base));
 	// if (n == -2147483648)
 	// {
 	// 	ft_putstr("-2147483648");
@@ -32,7 +32,7 @@ void	ft_putnbrbase(int n, int base)
 	// }
 	// else
 	// 	ft_putchar(n + '0');
-}
+//}
 
 static void	ft_putnbrbase_inner(uintmax_t nbr, char *base, t_data *data,
 		unsigned int len)
