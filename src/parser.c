@@ -85,7 +85,7 @@ char	*ft_printf_parse_width(char **format, va_list *list, t_data *data)
 			data->got_width = 1;
 			data->width = 0;
 			while (ft_isdigit(**format))
-				data->width = data->width * 10 + (*(*format)++ - '0') - 1;
+				data->width = data->width * 10 + (*(*format)++ - '0') + 1;
 		}
 	}
 	return (*format);
