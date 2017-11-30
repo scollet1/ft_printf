@@ -54,7 +54,7 @@ ssize_t				ft_printf_handle_wstr(char **format, va_list *args,
 		t_data *data);
 ssize_t				ft_printf_handle_long(char **format, va_list *args,
 		t_data *data);
-ssize_t				ft_printf_handle_long_bis(char **format, va_list *args,
+ssize_t				ft_printf_handle_longer(char **format, va_list *args,
 		t_data *data);
 ssize_t				ft_printf_handle_int(char **format, va_list *args,
 		t_data *data);

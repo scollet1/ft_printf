@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-ssize_t				ft_printf_handle_long_bis(char **format, va_list *args,
+ssize_t				ft_printf_handle_longer(char **format, va_list *args,
 		t_data *data)
 {
 	uintmax_t				nbr;

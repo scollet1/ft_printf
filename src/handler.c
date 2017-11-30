@@ -23,7 +23,7 @@ static void		init_handlers(t_handler *handler)
 	handler['i'] = &ft_printf_handle_int;
 	handler['o'] = &ft_printf_handle_octal;
 	handler['O'] = &ft_printf_handle_long;
-	handler['u'] = &ft_printf_handle_long_bis;
+	handler['u'] = &ft_printf_handle_longer;
 	handler['U'] = &ft_printf_handle_long;
 	handler['x'] = &ft_printf_handle_hexa;
 	handler['X'] = &ft_printf_handle_hexa;
