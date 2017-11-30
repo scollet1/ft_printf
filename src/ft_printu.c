@@ -67,4 +67,4 @@ ssize_t		ft_printfu(uintmax_t nbr, t_data *data, char *base, char *prefix)
 	if (data->got_width && data->right_pad)
 		ft_printf_width_pad(strlen, data->width, ' ');
 	return (data->got_width ? (ft_minmax(1, strlen, data->width)) : strlen);
-
+}
