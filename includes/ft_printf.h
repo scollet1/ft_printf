@@ -22,8 +22,6 @@ typedef struct		s_data
 	unsigned int	length;
 }					t_data;
 
-// typedef ssize_t			(*t_handler)(char**, va_list*, t_data*);
-
 char				*ft_printf_parse_flags(char **format, t_data *data);
 char				*ft_printf_parse_width(char **format, va_list *list,
 		t_data *data);
