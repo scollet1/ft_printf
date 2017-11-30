@@ -92,7 +92,7 @@ ssize_t			ft_printf_handle_wstr(char **format, va_list *args,
 	str = va_arg(*args, wchar_t*);
 	if (!str)
 		str = L"(null)";
-	strlen = data->got_accuracy ? (size_t)(ft_minmax(0, ft_strlen(str),
+	strlen = data->got_accuracy ? (size_t)(ft_minmax(0, ft_wstrlen(str),
 		data->accuracy)) : ft_wstrlen(str);
 	// strlen = calc_wstrlen(str, data->accuracy, 0);// :
 			// ft_strlen(str);
