@@ -54,7 +54,7 @@ ssize_t		ft_printfu(uintmax_t nbr, t_data *data, char *base, char *prefix)
 	if (data->got_width && !data->right_pad && data->zero_pad)
 	{
 		data->accuracy = ft_minmax(1, data->width, data->got_accuracy ?
-				data->accuracy : len);
+			data->accuracy : len);
 		data->got_accuracy = 1;
 		data->got_width = 0;
 	}
