@@ -72,15 +72,15 @@ static size_t	calc_wstrlen(wchar_t *str, int precision, size_t i)
 		return (i);
 }
 
-size_t ft_wstrlen(wchar_t *str)
-{
-	size_t i;
-
-	i = 0;
-	while (str[i])
-		i++;
-	return (i);
-}
+// size_t ft_wstrlen(wchar_t *str)
+// {
+// 	size_t i;
+//
+// 	i = 0;
+// 	while (str[i])
+// 		i++;
+// 	return (i);
+// }
 
 ssize_t			ft_printf_handle_wstr(char **format, va_list *args,
 		t_data *data)
@@ -92,8 +92,9 @@ ssize_t			ft_printf_handle_wstr(char **format, va_list *args,
 	str = va_arg(*args, wchar_t*);
 	if (!str)
 		str = L"(null)";
-	strlen = data->got_accuracy ? (size_t)(ft_minmax(0, ft_wstrlen(str),
-		data->accuracy)) : ft_wstrlen(str);
+	strlen = data->got_accuracy ? (size_t)(ft_minmax(0, calc_wstrlen(str,
+		data->accuracy, 0),
+		data->accuracy)) : calc_wstrlen(str, 0, 0);
 	// strlen = calc_wstrlen(str, data->accuracy, 0);// :
 			// ft_strlen(str);
 	if (data->got_width && !data->right_pad)
