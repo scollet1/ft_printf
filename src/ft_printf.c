@@ -21,10 +21,10 @@ int             handle_args(char **format, va_list *args, t_data *data)
   if (!(*(++*format)))
           return (0);
   if (!(ft_printf_parse_flags(format, data)) ||
-                  !(ft_printf_parse_width(format, args, data)) ||
-                  !(ft_printf_parse_accuracy(format, args, data)) ||
-                  !(ft_printf_parse_length(format, data)))
-          return (-1);
+      !(ft_printf_parse_width(format, args, data)) ||
+      !(ft_printf_parse_accuracy(format, args, data)) ||
+      !(ft_printf_parse_length(format, data)))
+    return (-1);
   if (!**format)
           return (0);
   if (!(f = ft_printf_get_handler(**format)))
