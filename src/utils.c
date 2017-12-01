@@ -27,7 +27,7 @@ unsigned int		ft_printf_maxstrlen(uintmax_t nbr, char *base, char *p,
 		result = len;
 	if (data->prefix && p && nbr)
 		result += ft_strlen(p);
-	return (result);
+	return (result + 1);
 }
 
 void				ft_printf_width_pad(int nbrstrlen, int width, char padwith)
