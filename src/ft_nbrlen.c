@@ -24,5 +24,5 @@ unsigned int	ft_printf_nbrlen(uintmax_t nbr, char *base)
 		return (1);
 	while (nbr && ++i)
 		nbr /= base_nbr;
-	return (i - 1);
+	return (i);
 }
