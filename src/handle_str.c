@@ -104,5 +104,5 @@ ssize_t	ft_printf_handle_str(char **format, va_list *args, t_data *data)
 		if (data->got_width)
 			return (strlen > data->width)? strlen: data->width;
 	}
-	return (ft_strlen(str));
+	return (0);
 }
