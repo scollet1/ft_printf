@@ -101,8 +101,10 @@ ssize_t	ft_printf_handle_str(char **format, va_list *args, t_data *data)
 		write(1, str, strlen);
 		if (data->got_width && data->right_pad)
 			ft_printf_width_pad(strlen, data->width, ' ');
-		if (data->got_width)
-			return (strlen > data->width)? strlen: data->width;
+		// if (data->got_width)
+		return ((data->got_width) ? ft_minmax(1, strlen, data->width) :
+			strlen);
+			// return (strlen > data->width)? strlen: d
 	}
 	return (ft_strlen(str));
 }
